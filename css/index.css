@@ -1,0 +1,583 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --yellow: #fbbd61;
+  --orange: #ec7532;
+
+  --animate-duration: 1.5s;
+}
+html,
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #717171;
+}
+
+.section {
+  padding: 75px 0;
+}
+::selection {
+  background-color: #ec7532;
+  color: white;
+}
+/* LI TAG UNDERLINE */
+.line::after {
+  content: "";
+  background: linear-gradient(to right, var(--yellow), var(--orange));
+  box-shadow: 0 0 100px 3px #fbbd61;
+  width: 0%;
+  height: 2px;
+  display: block;
+  transition: 0.5s;
+}
+.line:hover::after {
+  width: 100%;
+}
+.line.line__active::after {
+  width: 100%;
+}
+.line:focus::after {
+  width: 100%;
+}
+
+/* HEADER */
+header {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+header p {
+  font-size: 14px;
+  font-weight: bold;
+}
+#movieNavbar ul {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+#movieNavbar ul a {
+  color: white;
+  letter-spacing: 3px;
+  line-height: 0.8em;
+  padding: 20px 24px;
+}
+/* HEADERFIXED */
+#headerFixed {
+  background-color: #101010;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transform: translate(-50%, -100%);
+  transition: transform 0.5s;
+}
+/* CAROUSEL */
+#carouselMovie {
+  height: 650px;
+}
+#carouselMovie .carousel-inner {
+  height: 100%;
+}
+#carouselMovie .carousel-item {
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+#carouselMovie .carousel-item:nth-child(2) {
+  background-image: url(../images/hero-2.jpg);
+}
+#carouselMovie .carousel-item:last-child {
+  background-image: url(../images/hero-3.jpg);
+}
+#carouselMovie .carousel-item:first-child {
+  background-image: url(../images/hero-1.jpg);
+}
+.movieCarousel {
+  position: relative;
+}
+.carousel-item {
+  position: relative;
+  transition: transform 2s ease-in-out;
+}
+.carousel-fade .active.carousel-item-start,
+.carousel-fade .active.carousel-item-end {
+  transition: opacity 0s 2s;
+}
+#carouselMovie .carousel-item .carousel-caption {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+#carouselMovie .carousel-item .carousel-caption p:first-of-type {
+  color: var(--yellow);
+  font-size: 0.875rem;
+  letter-spacing: 2px;
+  margin: 0;
+}
+#carouselMovie .carousel-item .carousel-caption p:last-of-type {
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+}
+#carouselMovie .carousel-item .carousel-caption h2 {
+  font-size: 3.25rem;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+#carouselMovie .carousel-item .carousel-caption .movieCarousel__tailer > span {
+  font-size: 0.8rem;
+  width: 48px;
+  height: 48px;
+  border: 2px solid white;
+  border-radius: 50%;
+  line-height: 48px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 8px;
+}
+#carouselMovie .carousel-item .carousel-caption .movieCarousel__tailer button {
+  padding: 12px 48px;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  letter-spacing: 6px;
+  color: white;
+  background: linear-gradient(to right, var(--yellow), var(--orange));
+  position: relative;
+  overflow: hidden;
+}
+#carouselMovie
+  .carousel-item
+  .carousel-caption
+  .movieCarousel__tailer
+  button
+  span {
+  position: relative;
+  z-index: 2;
+}
+#carouselMovie
+  .carousel-item
+  .carousel-caption
+  .movieCarousel__tailer
+  button::before {
+  content: "";
+  width: 110%;
+  height: 100%;
+  background-color: var(--yellow);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  transform: skewX(30deg) translateX(-110%);
+  transition: 0.5s;
+}
+#carouselMovie
+  .carousel-item
+  .carousel-caption
+  .movieCarousel__tailer
+  button:hover:before {
+  transform: skewX(30deg) translateX(-10px);
+}
+
+#carouselMovie .carousel-indicators {
+  margin: 0 auto;
+}
+#carouselMovie .carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: transparent;
+  box-sizing: border-box;
+  margin: 0 20px 20px 0;
+}
+#carouselMovie .carousel-indicators button.active {
+  background-color: white;
+}
+.carousel__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, black, transparent);
+}
+/* NEW IN */
+.title {
+  color: var(--yellow);
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  text-align: center;
+}
+.newIn__content img {
+  width: 100%;
+  object-fit: cover;
+}
+.newIn__title {
+  text-align: center;
+}
+.newIn__title h3 {
+  color: #4a4a4a;
+  font-size: 18px;
+  margin: 1rem 0;
+}
+.newIn__title svg {
+  color: var(--orange);
+}
+.newIn__img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.newIn__overlay {
+  width: 240%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, var(--yellow), var(--orange));
+  transform: skew(40deg) translateX(-300%);
+  transition: 1s;
+}
+.newIn__img:hover .newIn__overlay {
+  transform: skew(40deg) translateX(-35%);
+  opacity: 0.8;
+}
+.newIn__play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 1s;
+}
+.newIn__img:hover .newIn__play {
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+.newIn .newIn__content .newIn__img .newIn__play a,
+p {
+  color: white;
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin: 1rem 0;
+  text-decoration: none;
+  font-weight: bold;
+}
+.newIn__play p {
+  font-size: 1.2rem;
+}
+.newIn__play a:first-of-type {
+  width: 80px !important;
+  height: 80px;
+  border: 1px solid white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 80px;
+  display: block;
+  margin: 1rem auto;
+  transform: scale(1);
+  transition: 0.5s;
+}
+.newIn__play a:first-of-type:hover {
+  transform: scale(1.2);
+}
+/* SHOWTIMES */
+.showTimes__row {
+  border-bottom: 1px solid #d8d8d8;
+}
+#myTabContent .tab-pane .showTimes__row:last-child {
+  border: none;
+}
+.showTimes__row img {
+  border-radius: 5px;
+}
+.showTimes__row p:first-of-type {
+  color: var(--orange);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+}
+.showTimes__row p:nth-of-type(2) {
+  color: #717171;
+}
+.showTimes__row h3 {
+  font-size: 24px;
+  font-weight: 300;
+  color: #101010;
+  letter-spacing: 1px;
+}
+.showTimes__row a {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--orange);
+  text-decoration: none;
+  transition: 0.5s;
+}
+.showTimes__row a:hover {
+  color: #101010;
+}
+
+.showtime .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  border: none;
+  color: var(--orange);
+}
+.nav-item .nav-link {
+  border: none;
+  padding: 0;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #717171;
+}
+.showtime .nav-tabs .nav-item {
+  margin-bottom: 0;
+}
+
+#myTab .nav-item .nav-link span {
+  padding: 15px 30px;
+  display: block;
+}
+.showTimes__runningTimes {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #4a4a4a;
+}
+.showTimes__runningTimes button {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #717171;
+  background-color: #d8d8d8;
+}
+.showTimes__mins {
+  margin: 0 0 0 10px;
+}
+.showTimes__mins span {
+  width: 33px;
+  height: 33px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #4a4a4a;
+  color: #d8d8d8;
+  line-height: 33px;
+  text-align: center;
+}
+.showTimes__mins p {
+  color: #717171 !important;
+  font-weight: 700;
+  margin: 0;
+}
+.showTimes__row img{
+  width: 100%;
+}
+/* COMINGSOON */
+.comingSoon {
+  background: #101010 url(../images/slide-3.png);
+  background-size: cover;
+}
+.comingSoon .comingSoon__type {
+  color: #ec7532;
+  margin: 0;
+}
+.comingSoon h3 {
+  color: white;
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.comingSoon__star > svg {
+  color: #ec7532;
+}
+.comingSoon__calendar {
+  color: white;
+  margin-left: 10px;
+}
+.comingSoon__calendar svg {
+  margin: 0 10px 0 0px;
+}
+.comingSoon__content a {
+  text-decoration: none;
+  color: #d8d8d8;
+  margin-top: 10px;
+  display: block;
+  transition: 0.5s;
+}
+.comingSoon__content a:hover {
+  color: var(--yellow);
+}
+/* MOVIELIS */
+.movieList {
+  background-color: #717171;
+}
+.movieList__item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.movieList__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+  transition: 0.5s;
+}
+.movieList__overlay:hover {
+  opacity: 0;
+}
+/* FOOTER */
+.footer {
+  background-color: black;
+}
+.footer__top {
+  border-bottom: 2px solid #717171;
+}
+.footer__top .container {
+  padding-bottom: 50px;
+}
+.footer__top .container h3 {
+  color: #ec7532;
+}
+.footer__top .container ul {
+  padding: 0;
+}
+.footer__top .container ul li {
+  list-style: none;
+}
+.footer__top .container ul li a {
+  text-decoration: none;
+  color: white;
+}
+.footer__bot h1 {
+  margin: 0;
+  margin-top: 20px;
+  display: inline-block;
+  letter-spacing: 2px;
+}
+.footer__bot span {
+  letter-spacing: 1px;
+  font-size: 2.5rem;
+}
+.bot__content {
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+.footer__bot .bot__content .slogan {
+  font-size: 18px;
+  margin: 0;
+  letter-spacing: 5px;
+  color: #d8d8d8;
+}
+.logo {
+  text-align: center;
+  color: rgb(200, 16, 40);
+}
+/* RESPONSIVE */
+@media screen and (max-width: 1199.9px) {
+  header .container {
+    padding-left: 15px;
+  }
+  header .navbar .navbar-brand .logo {
+    max-width: 180px;
+    font-size: 2px;
+  }
+  header .navbar .navbar-brand .logo h1 {
+    font-size: calc(1rem + 1.5vw);
+    margin: 0;
+  }
+  header .navbar-collapse .nav-link {
+    font-size: calc(0.5rem + 0.5vw);
+  }
+  header ul a {
+    padding: 20px !important;
+  }
+  header .navbar-toggler {
+    color: #ec7532;
+    font-size: calc(1rem + 1vw);
+  }
+  header .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  header .navbar-nav {
+    background-color: #101010;
+    text-align: center;
+  }
+  #carouselMovie .carousel-item .carousel-caption {
+    padding-top: 0;
+    padding-left: 20px;
+  }
+  #carouselMovie .carousel-item .carousel-caption h2 {
+    font-size: calc(2rem + 1.5vw);
+    margin: 20px 0;
+  }
+  #carouselMovie .carousel-item .carousel-caption p:last-of-type {
+    font-size: calc(0.8rem + 0.5vw);
+    margin: 0;
+  }
+  #carouselMovie
+    .carousel-item
+    .carousel-caption
+    .movieCarousel__tailer
+    > span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 0.5rem;
+  }
+  #carouselMovie
+    .carousel-item
+    .carousel-caption
+    .movieCarousel__tailer
+    button {
+    padding: 9px 20px;
+    margin-top: calc(20px + 1.5vh);
+  }
+   #myTab .nav-item .nav-link span {
+    padding: 10px 15px;
+    font-size: calc(10px + 1vw);
+    display: block;
+
+  }
+
+}
+
+@media screen and (max-width: 767.8px) {
+  header {
+    top: 0;
+  }
+  .container {
+    max-width: 100%;
+  }
+  header .navbar .navbar-brand .logo h1 {
+    margin: 0;
+  }
+  .footer .footer__top {
+    position: relative;
+    height: 35vh;
+  }
+  .footer__top .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: 9%;
+  }
+  #myTab .nav-item .nav-link span {
+    padding: 10px 10px;
+    font-size: calc(8px + 1vw);
+    display: block;
+    max-width: 100%;
+  }
+}
